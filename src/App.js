@@ -1,27 +1,10 @@
-const https = require('https');
 import logo from './logo.svg';
 import './App.css';
 
 const query = async () => {
   const url = 'https://api-mainnet.magiceden.io/rpc/getCollectionEscrowStats/degods?edge_cache=true';
-  const data = await httpGet(url);
-  console.log('data: ', data)
-}
-
-/**
- * Native http get requests
- * @param {string} url - the url to send HTTP GET request to 
- * @returns {Object | Array<Object>} - data returned from GET request
- */
-const httpGet = async (url) => {
-  return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      let data = '';
-      res.on('data', (chunk) => { data = data + chunk.toString(); });
-      res.on('end', () => { resolve(JSON.parse(data)); });
-      res.on('error', (err) => { reject(err.message); });
-    });
-  })
+  const data = await fetch(url);
+  console.log('data: ', await data.json())
 }
 
 function App() {
