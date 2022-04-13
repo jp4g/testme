@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 const query = async () => {
-  const url = 'https://api-mainnet.magiceden.io/all_collections_with_escrow_data?edge_cache=true';
+  const url = 'https://api-mainnet.magiceden.io/v2/collections/degods/stats';
   const data = await fetch(url);
   alert(JSON.stringify((await data.json())))
 }
